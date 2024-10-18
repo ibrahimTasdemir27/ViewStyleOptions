@@ -16,7 +16,7 @@ public struct Border {
     let size: CGFloat
     let color: UIColor
     
-    static let lightGray: Border = .init(size: 0.4, color: UIColor.darkGray)
+    public static let lightGray: Border = .init(size: 0.4, color: UIColor.darkGray)
 }
 
 
@@ -26,6 +26,6 @@ public struct Shadow {
     let offset: CGSize
     let radius: CGFloat
     
-    static let defaultShadow = Shadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 0.5), radius: 15)
+    public static let defaultShadow = Shadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 0.5), radius: 15)
 }
 

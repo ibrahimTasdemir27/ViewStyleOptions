@@ -18,6 +18,11 @@ public extension UIEdgeInsets {
     }
 }
 
+func asdsds() {
+    let container = UIView(configs: .setRadius(8), .setShadow(.defaultShadow),
+                           .setBorder(.lightGray), .setBackground(.systemGray5))
+}
+
 public extension UIView {
     convenience init(configs: ViewStyleOptions...) {
         self.init()
