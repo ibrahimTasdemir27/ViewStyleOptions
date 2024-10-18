@@ -76,3 +76,25 @@ public extension UILabel {
     }
 }
 
+
+public extension UITextView {
+    convenience init(configs: ViewStyleOptions..., special: TextViewStyleOptions...) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    convenience init(special: TextViewStyleOptions...) {
+        self.init()
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    func applyStyles(_ styles: TextViewStyleOptions...) {
+        styles.forEach { $0.apply(to: self) }
+    }
+    
+    func applyStyles(_ styles: [TextViewStyleOptions]) {
+        styles.forEach { $0.apply(to: self) }
+    }
+}
+
