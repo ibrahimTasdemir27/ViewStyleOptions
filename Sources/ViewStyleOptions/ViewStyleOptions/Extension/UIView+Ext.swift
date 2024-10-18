@@ -18,7 +18,7 @@ public extension UIEdgeInsets {
     }
 }
 
-
+ 
 public extension UIView {
     convenience init(configs: ViewStyleOptions...) {
         self.init()
