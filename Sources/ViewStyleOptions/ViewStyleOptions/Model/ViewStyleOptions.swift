@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ViewStyleOptionsApplier {
+public protocol ViewStyleOptionsApplier {
     associatedtype Target: UIView
     func apply(to target: Target)
 }

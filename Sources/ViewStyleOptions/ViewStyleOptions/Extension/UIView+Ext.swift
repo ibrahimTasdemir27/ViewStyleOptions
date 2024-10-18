@@ -18,7 +18,7 @@ public extension UIEdgeInsets {
     }
 }
 
-extension UIView {
+public extension UIView {
     convenience init(configs: ViewStyleOptions...) {
         self.init()
         configs.forEach({ $0.apply(to: self) })
@@ -33,7 +33,7 @@ extension UIView {
     }
 }
 
-extension UIButton {
+public extension UIButton {
     convenience init(configs: ViewStyleOptions..., special: ButtonViewStyleOptions...) {
         self.init()
         configs.forEach({ $0.apply(to: self) })
@@ -55,7 +55,7 @@ extension UIButton {
     }
 }
 
-extension UILabel {
+public extension UILabel {
     convenience init(configs: ViewStyleOptions..., special: LabelViewStyleOptions...) {
         self.init()
         configs.forEach({ $0.apply(to: self) })
