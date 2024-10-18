@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+ 
 extension UIControl {
     func onTapGesture(action: (() -> Void)?) {
         self.addAction(UIAction() { _ in
