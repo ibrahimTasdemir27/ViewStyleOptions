@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum LabelViewStyleOptions {
+public enum LabelViewStyleOptions: ViewStyleOptionsApplier {
     case setText(String?)
     case setFont(UIFont)
     case setTextColor(UIColor)
@@ -15,7 +15,7 @@ enum LabelViewStyleOptions {
     case set0Line
 }
 
-extension LabelViewStyleOptions: ViewStyleOptionsApplier {
+public extension LabelViewStyleOptions {
     typealias Target = UILabel
     func apply(to target: UILabel) {
         

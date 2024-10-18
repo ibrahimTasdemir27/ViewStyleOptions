@@ -12,7 +12,7 @@ protocol ViewStyleOptionsApplier {
     func apply(to target: Target)
 }
 
-struct Border {
+public struct Border {
     let size: CGFloat
     let color: UIColor
     
@@ -20,7 +20,7 @@ struct Border {
 }
 
 
-struct Shadow {
+public struct Shadow {
     let color: UIColor
     let opacity: Float
     let offset: CGSize

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ViewStyleOptions {
+public enum ViewStyleOptions: ViewStyleOptionsApplier {
     case setBorder(Border)
     case setRadius(CGFloat)
     case setBackground(UIColor)
@@ -20,7 +20,7 @@ enum ViewStyleOptions {
 }
 
 
-extension ViewStyleOptions: ViewStyleOptionsApplier {
+public extension ViewStyleOptions {
     typealias Target = UIView
     
     func apply(to target: UIView) {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ButtonViewStyleOptions {
+public enum ButtonViewStyleOptions: ViewStyleOptionsApplier {
     case setTitle(String?)
     case setTitleColor(UIColor)
     case setImage(UIImage?)
@@ -16,7 +16,7 @@ enum ButtonViewStyleOptions {
     case setAction((() -> Void)?)
 }
 
-extension ButtonViewStyleOptions: ViewStyleOptionsApplier {
+public extension ButtonViewStyleOptions {
     typealias Target = UIButton
     func apply(to target: UIButton) {
         switch self {
