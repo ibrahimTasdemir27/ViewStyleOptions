@@ -99,3 +99,25 @@ public extension UITextView {
     }
 }
 
+
+public extension UIImageView {
+    convenience init(configs: ViewStyleOptions..., special: ImageViewStyleOptions...) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    convenience init(special: ImageViewStyleOptions...) {
+        self.init()
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    func applyStyles(_ styles: ImageViewStyleOptions...) {
+        styles.forEach { $0.apply(to: self) }
+    }
+    
+    func applyStyles(_ styles: [ImageViewStyleOptions]) {
+        styles.forEach { $0.apply(to: self) }
+    }
+}
+

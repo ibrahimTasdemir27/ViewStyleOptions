@@ -13,12 +13,14 @@ public enum TextViewStyleOptions: ViewStyleOptionsApplier {
     case setTextColor(UIColor)
     case setAligment(NSTextAlignment)
     case setEditable(Bool)
+    case setContentInset(UIEdgeInsets)
+    case setScrollEnabled(Bool)
+    case setLineSpacing(CGFloat)
 }
 
 public extension TextViewStyleOptions {
     typealias Target = UITextView
     func apply(to target: UITextView) {
-        
         switch self {
         case .setText(let string):
             target.text = string?.localized
@@ -30,6 +32,17 @@ public extension TextViewStyleOptions {
             target.textAlignment = aligment
         case .setEditable(let editable):
             target.isEditable = editable
+        case .setContentInset(let edgeInset):
+            target.contentInset = edgeInset
+        case .setScrollEnabled(let isEnabled):
+            target.isScrollEnabled = isEnabled
+        case .setLineSpacing(let spacing):
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = spacing
+            let attributed = NSMutableAttributedString(string: target.text)
+            attributed.addAttribute(.paragraphStyle, value: attributed, range: NSMakeRange(0, attributed.length))
+            target.attributedText = attributed
         }
     }
 }
+
