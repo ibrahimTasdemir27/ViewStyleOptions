@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+ 
 public enum ButtonViewStyleOptions: ViewStyleOptionsApplier {
     case setTitle(String?)
     case setTitleColor(UIColor)
