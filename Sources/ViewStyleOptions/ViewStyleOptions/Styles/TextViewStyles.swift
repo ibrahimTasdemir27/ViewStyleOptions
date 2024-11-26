@@ -16,6 +16,7 @@ public enum TextViewStyleOptions: ViewStyleOptionsApplier {
     case setContentInset(UIEdgeInsets)
     case setScrollEnabled(Bool)
     case setLineSpacing(CGFloat)
+    case setZeroInset
 }
 
 public extension TextViewStyleOptions {
@@ -42,6 +43,10 @@ public extension TextViewStyleOptions {
             let attributed = NSMutableAttributedString(string: target.text)
             attributed.addAttribute(.paragraphStyle, value: attributed, range: NSMakeRange(0, attributed.length))
             target.attributedText = attributed
+        case .setZeroInset:
+            target.textContainer.lineFragmentPadding = 0
+            target.textContainerInset = .zero
+            target.contentInset = .zero
         }
     }
 }
