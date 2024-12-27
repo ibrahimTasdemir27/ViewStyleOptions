@@ -81,7 +81,7 @@ public struct Skeleton {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.frame = target.bounds
-        gradient.cornerRadius = target.layer.cornerRadius
+        gradient.cornerRadius = target.layer.cornerRadius != 0 ? target.layer.cornerRadius : 8
         let animation = CABasicAnimation(keyPath: "locations")
         animation.fromValue = fromValue
         animation.toValue = toValue
