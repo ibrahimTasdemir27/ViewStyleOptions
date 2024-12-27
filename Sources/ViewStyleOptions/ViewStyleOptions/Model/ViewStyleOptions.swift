@@ -72,6 +72,10 @@ public struct Skeleton {
     )
     
     func apply(target: UIView) {
+        target.subviews.forEach { subview in
+            apply(target: subview)
+        }
+        guard target.tag == 27 else { return }
         let gradient = CAGradientLayer()
         gradient.colors = colors.map(\.cgColor)
         gradient.startPoint = CGPoint(x: 0, y: 0)
