@@ -76,20 +76,22 @@ public struct Skeleton {
             apply(target: subview)
         }
         guard target.tag == 27 else { return }
-        let gradient = CAGradientLayer()
-        gradient.colors = colors.map(\.cgColor)
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.frame = target.bounds
-        gradient.cornerRadius = target.layer.cornerRadius != 0 ? target.layer.cornerRadius : 8
-        let animation = CABasicAnimation(keyPath: "locations")
-        animation.fromValue = fromValue
-        animation.toValue = toValue
-        animation.duration = duration
-        animation.repeatCount = .infinity
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        gradient.add(animation, forKey: "skeletonAnimation")
-        target.layer.addSublayer(gradient)
+        DispatchQueue.main.async {
+            let gradient = CAGradientLayer()
+            gradient.colors = colors.map(\.cgColor)
+            gradient.startPoint = CGPoint(x: 0, y: 0)
+            gradient.endPoint = CGPoint(x: 1, y: 1)
+            gradient.frame = target.bounds
+            gradient.cornerRadius = target.layer.cornerRadius != 0 ? target.layer.cornerRadius : 8
+            let animation = CABasicAnimation(keyPath: "locations")
+            animation.fromValue = fromValue
+            animation.toValue = toValue
+            animation.duration = duration
+            animation.repeatCount = .infinity
+            animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            gradient.add(animation, forKey: "skeletonAnimation")
+            target.layer.addSublayer(gradient)
+        }
     }
 }
 
