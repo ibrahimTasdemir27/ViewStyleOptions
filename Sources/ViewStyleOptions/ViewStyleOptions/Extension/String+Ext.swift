@@ -13,3 +13,4 @@ public extension String {
         NSLocalizedString(self, comment: "")
     }
 }
+
