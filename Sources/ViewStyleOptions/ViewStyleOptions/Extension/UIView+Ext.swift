@@ -120,4 +120,3 @@ public extension UIImageView {
         styles.forEach { $0.apply(to: self) }
     }
 }
-

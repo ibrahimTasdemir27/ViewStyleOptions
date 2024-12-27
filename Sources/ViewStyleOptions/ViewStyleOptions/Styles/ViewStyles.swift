@@ -16,7 +16,9 @@ public enum ViewStyleOptions: ViewStyleOptionsApplier {
     case setAlpha(CGFloat)
     case setSize(CGSize)
     case addSubviews([UIView])
-    
+    case setSkeleton(Skeleton)
+    case disableSkeleton
+    case setTag(Int)
 }
 
 
@@ -54,6 +56,15 @@ public extension ViewStyleOptions {
             subviews.forEach { subview in
                 target.addSubview(subview)
             }
+        case .setSkeleton(let skeleton):
+            skeleton.apply(target: target)
+        case .disableSkeleton:
+            target.layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+            target.subviews.forEach { subview in
+                ViewStyleOptions.disableSkeleton.apply(to: subview)
+            }
+        case .setTag(let tag):
+            target.tag = tag
         }
     }
 }
