@@ -41,6 +41,12 @@ public extension UIButton {
         special.forEach({ $0.apply(to: self) })
     }
     
+    convenience init(configs: [ViewStyleOptions], special: [ButtonViewStyleOptions]) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
     convenience init(special: ButtonViewStyleOptions...) {
         self.init()
         special.forEach({ $0.apply(to: self) })
@@ -58,6 +64,12 @@ public extension UIButton {
 
 public extension UILabel {
     convenience init(configs: ViewStyleOptions..., special: LabelViewStyleOptions...) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    convenience init(configs: [ViewStyleOptions], special: [LabelViewStyleOptions]) {
         self.init()
         configs.forEach({ $0.apply(to: self) })
         special.forEach({ $0.apply(to: self) })
@@ -85,6 +97,12 @@ public extension UITextView {
         special.forEach({ $0.apply(to: self) })
     }
     
+    convenience init(configs: [ViewStyleOptions], special: [TextViewStyleOptions]) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
     convenience init(special: TextViewStyleOptions...) {
         self.init()
         special.forEach({ $0.apply(to: self) })
@@ -102,6 +120,12 @@ public extension UITextView {
 
 public extension UIImageView {
     convenience init(configs: ViewStyleOptions..., special: ImageViewStyleOptions...) {
+        self.init()
+        configs.forEach({ $0.apply(to: self) })
+        special.forEach({ $0.apply(to: self) })
+    }
+    
+    convenience init(configs: [ViewStyleOptions], special: [ImageViewStyleOptions]) {
         self.init()
         configs.forEach({ $0.apply(to: self) })
         special.forEach({ $0.apply(to: self) })
