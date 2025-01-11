@@ -20,7 +20,7 @@ To integrate ViewStyleOptions into your Xcode project using Swift Package Manage
 
 ```
 dependencies: [
-    .package(url: "https://github.com/ibrahimTasdemir27/ViewStyleOptions", .upToNextMajor(from: "3.0.0"))
+    .package(url: "https://github.com/ibrahimTasdemir27/ViewStyleOptions", .upToNextMajor(from: "2.0.0"))
 ]
 ```
 
