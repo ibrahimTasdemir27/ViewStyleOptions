@@ -22,3 +22,5 @@ public struct Shadow {
     
     public static let defaultShadow = Shadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 0.5), radius: 15)
 }
+ 
+
