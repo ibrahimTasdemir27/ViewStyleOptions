@@ -18,6 +18,7 @@ public enum ViewStyleOptions: ViewStyleOptionsApplier {
     case addSubviews([UIView])
     case setSkeleton(Skeleton)
     case disableSkeleton
+    case setGradient(HGradient)
     case setTag(Int)
 }
 
@@ -63,6 +64,8 @@ public extension ViewStyleOptions {
             target.subviews.forEach { subview in
                 ViewStyleOptions.disableSkeleton.apply(to: subview)
             }
+        case .setGradient(let gradient):
+            gradient.apply(to: target)
         case .setTag(let tag):
             target.tag = tag
         }
