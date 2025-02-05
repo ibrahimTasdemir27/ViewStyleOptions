@@ -70,7 +70,6 @@ public class HGradient: NSObject {
         if keyPath == "bounds", let target = target {
             target.removeObserver(self, forKeyPath: "bounds")
             apply(to: target)
-            self.target = nil
         }
     }
     
