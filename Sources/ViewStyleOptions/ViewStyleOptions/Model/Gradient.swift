@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct HGradient {
+public class HGradient: NSObject {
     let startPoint: CGPoint
     let endPoint: CGPoint
     let colors: [UIColor]
@@ -42,7 +42,7 @@ public struct HGradient {
         self.otherAnimations = otherAnimations
     }
     
-    public init(gradient: GradientExample, animation: AnimationType?) {
+    public convenience init(gradient: GradientExample, animation: AnimationType?) {
         self.init(
             startPoint: gradient.gradient.startPoint,
             endPoint: gradient.gradient.endPoint,
@@ -54,7 +54,7 @@ public struct HGradient {
         )
     }
     
-    public init(gradient: HGradient, animation: AnimationType?) {
+    public convenience init(gradient: HGradient, animation: AnimationType?) {
         self.init(
             startPoint: gradient.startPoint,
             endPoint: gradient.endPoint,
@@ -66,8 +66,29 @@ public struct HGradient {
         )
     }
     
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "bounds", let target = target {
+            target.removeObserver(self, forKeyPath: "bounds")
+            apply(to: target)
+            self.target = nil
+        }
+    }
+    
+    private var target: UIView?
+    
 
     func apply(to target: UIView) {
+        guard target.frame != .zero else {
+            guard self.target == nil else { return }
+            target.addObserver(self, forKeyPath: "bounds", options: [.new], context: nil)
+            self.target = target
+            return
+        }
+        
+        if target.layer.sublayers?.contains(where: { $0 is CAGradientLayer }) == true {
+              return
+        }
+        
         let layer = CAGradientLayer()
         layer.frame = target.bounds
         layer.colors = colors.map { $0.cgColor }
