@@ -67,10 +67,14 @@ public class HGradient: NSObject {
     }
     
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "bounds", let target = target {
+        guard keyPath == "bounds", let target = target else { return }
+        
+        // Gözlemciyi kaldırmadan önce doğrulama yapın
+        if (object as? UIView) === target {
             target.removeObserver(self, forKeyPath: "bounds")
-            apply(to: target)
         }
+        
+        apply(to: target)
     }
     
     private var target: UIView?
