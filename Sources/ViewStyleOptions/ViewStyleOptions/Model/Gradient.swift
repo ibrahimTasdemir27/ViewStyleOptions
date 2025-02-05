@@ -137,7 +137,7 @@ public extension HGradient {
         case mintyFresh
         case galaxy
         
-        static func withAxis(axis: GradientLayerType, gradient: GradientExample) -> HGradient {
+        public static func withAxis(axis: GradientLayerType, gradient: GradientExample) -> HGradient {
             return .init(
                 startPoint: axis.startPoint(),
                 endPoint: axis.endPoint(),
@@ -149,7 +149,7 @@ public extension HGradient {
             )
         }
         
-        var gradient: HGradient {
+        public var gradient: HGradient {
             switch self {
             case .midnightShadow:
                 return HGradient(
@@ -400,7 +400,7 @@ public extension HGradient {
         case breathing
         case shimmer
         
-        var animation: CABasicAnimation {
+        public var animation: CABasicAnimation {
             switch self {
             case .opacityChange:
                 let animation = CABasicAnimation(keyPath: "opacity")
@@ -448,7 +448,7 @@ public extension HGradient {
         case conic
         case radial
 
-        func type() -> CAGradientLayerType {
+        public func type() -> CAGradientLayerType {
             switch self {
             case .axial:   .axial
             case .conic:   .conic
@@ -456,7 +456,7 @@ public extension HGradient {
             }
         }
         
-        func startPoint() -> CGPoint {
+        public func startPoint() -> CGPoint {
             switch self {
             case .axial:
                 return .init(x: 0, y: 0.5)
@@ -467,7 +467,7 @@ public extension HGradient {
             }
         }
         
-        func endPoint() -> CGPoint {
+        public func endPoint() -> CGPoint {
             switch self {
             case .axial:
                 return .init(x: 1, y: 0.5)
