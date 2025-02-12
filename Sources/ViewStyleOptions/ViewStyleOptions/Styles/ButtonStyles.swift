@@ -9,7 +9,7 @@ import UIKit
  
 public enum ButtonViewStyleOptions: ViewStyleOptionsApplier {
     case setTitle(String?)
-    case setTitleColor(UIColor)
+    case setTitleColor(UIColor?)
     case setImage(UIImage?)
     case setContentInset(UIEdgeInsets)
     case setFont(UIFont)

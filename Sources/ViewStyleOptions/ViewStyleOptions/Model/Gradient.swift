@@ -66,32 +66,7 @@ public class HGradient: NSObject {
         )
     }
     
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard keyPath == "bounds", let target = target else { return }
-        
-        // Gözlemciyi kaldırmadan önce doğrulama yapın
-        if (object as? UIView) === target {
-            target.removeObserver(self, forKeyPath: "bounds")
-        }
-        
-        apply(to: target)
-    }
-    
-    private var target: UIView?
-    
-
     func apply(to target: UIView) {
-        guard target.frame != .zero else {
-            guard self.target == nil else { return }
-            target.addObserver(self, forKeyPath: "bounds", options: [.new], context: nil)
-            self.target = target
-            return
-        }
-        
-        if target.layer.sublayers?.contains(where: { $0 is CAGradientLayer }) == true {
-              return
-        }
-        
         let layer = CAGradientLayer()
         layer.frame = target.bounds
         layer.colors = colors.map { $0.cgColor }
@@ -120,11 +95,14 @@ public class HGradient: NSObject {
         }
     }
     
+    deinit {
+        print("Hello, I'm deinit: ViewStyleOptions.HGradient")
+    }
 
-    static let peach = UIColor(red: 1.0, green: 0.83, blue: 0.61, alpha: 1.0)
-    static let lavender = UIColor(red: 0.9, green: 0.9, blue: 1.0, alpha: 1.0)
-    static let fuchsia = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
-    static let mint = UIColor(red: 0.67, green: 1.0, blue: 0.77, alpha: 1.0)
+    static public let peach = UIColor(red: 1.0, green: 0.83, blue: 0.61, alpha: 1.0)
+    static public let lavender = UIColor(red: 0.9, green: 0.9, blue: 1.0, alpha: 1.0)
+    static public let fuchsia = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+    static public let mint = UIColor(red: 0.67, green: 1.0, blue: 0.77, alpha: 1.0)
 }
 
 
@@ -135,7 +113,9 @@ public extension HGradient {
         case deepOcean
         case silverMist
         case softGlow
+        case reversedSoftGlow
         case mintBreeze
+        case reversedMintBreeze
 
         case coralSunset
         case roseFusion
@@ -225,6 +205,16 @@ public extension HGradient {
                     ],
                     locations: [0, 1]
                 )
+            case .reversedSoftGlow:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 255.0 / 255.0, green: 169.0 / 255.0, blue: 249.0 / 255.0, alpha: 1.0),
+                        .init(red: 255.0 / 255.0, green: 247.0 / 255.0, blue: 174.0 / 255.0, alpha: 1.0),
+                    ],
+                    locations: [0, 1]
+                )
             case .mintBreeze:
                 return HGradient(
                     startPoint: CGPoint(x: 0, y: 0.5),
@@ -232,6 +222,16 @@ public extension HGradient {
                     colors: [
                         .init(red: 205.0 / 255.0, green: 255.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0),
                         .init(red: 147.0 / 255.0, green: 185.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+            case .reversedMintBreeze:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 147.0 / 255.0, green: 185.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0),
+                        .init(red: 205.0 / 255.0, green: 255.0 / 255.0, blue: 216.0 / 255.0, alpha: 1.0),
                     ],
                     locations: [0, 1]
                 )
@@ -250,7 +250,7 @@ public extension HGradient {
                     startPoint: CGPoint(x: 0, y: 0.5),
                     endPoint: CGPoint(x: 1, y: 0.5),
                     colors: [
-                        .init(red: 255.0 / 255.0, green: 87.0 / 255.0, blue: 176.0 / 88.0, alpha: 1.0),
+                        .init(red: 255.0 / 255.0, green: 87.0 / 255.0, blue: 176.0 / 255.0, alpha: 1.0),
                         .init(red: 140.0 / 255.0, green: 82.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
                     ],
                     locations: [0, 1]
