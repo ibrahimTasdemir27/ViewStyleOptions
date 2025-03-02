@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by İbrahim Taşdemir on 4.02.2025.
 //
@@ -29,10 +29,10 @@ public class HGradient: NSObject {
             self.repeatCount = repeatCount
         }
     }
-
+    
     public init(startPoint: CGPoint = .zero, endPoint: CGPoint = .init(x: 1, y: 1),
-         colors: [UIColor], locations: [NSNumber]? = [0, 1], type: CAGradientLayerType = .axial,
-         animation: TransitionAnimation? = nil, otherAnimations: [CABasicAnimation] = []) {
+                colors: [UIColor], locations: [NSNumber]? = [0, 1], type: CAGradientLayerType = .axial,
+                animation: TransitionAnimation? = nil, otherAnimations: [CABasicAnimation] = []) {
         self.startPoint = startPoint
         self.endPoint = endPoint
         self.colors = colors
@@ -98,7 +98,7 @@ public class HGradient: NSObject {
     deinit {
         print("Hello, I'm deinit: ViewStyleOptions.HGradient")
     }
-
+    
     static public let peach = UIColor(red: 1.0, green: 0.83, blue: 0.61, alpha: 1.0)
     static public let lavender = UIColor(red: 0.9, green: 0.9, blue: 1.0, alpha: 1.0)
     static public let fuchsia = UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
@@ -116,14 +116,14 @@ public extension HGradient {
         case reversedSoftGlow
         case mintBreeze
         case reversedMintBreeze
-
+        
         case coralSunset
         case roseFusion
         case violetDream
         case crimsonPulse
         case skyTwilight
         case arcticWave
-
+        
         case tropicalBloom
         case aquaForest
         case limeLagoon
@@ -140,6 +140,21 @@ public extension HGradient {
         case autumnLeaves
         case mintyFresh
         case galaxy
+        
+        case darkForest
+        case freshSpring
+        case deepForest
+        case gardenGlow
+        case dayAndNight
+        
+        case naturalRenewal
+        case forestFresh
+        case softGrass
+        case underTheShade
+        case freshSpringBreeze
+        case endlessSpring
+        case risingLeaves
+        case mysticForest
         
         public static func withAxis(axis: GradientLayerType, gradient: GradientExample) -> HGradient {
             return .init(
@@ -411,6 +426,138 @@ public extension HGradient {
                     colors: [UIColor.purple, UIColor.blue, UIColor.black],
                     locations: [0, 1]
                 )
+                
+            case .darkForest:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 2.0 / 255.0, green: 48.0 / 255.0, blue: 31.0 / 255.0, alpha: 1.0),
+                        .init(red: 78.0 / 255.0, green: 109.0 / 255.0, blue: 95.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+            case .freshSpring:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 2.0 / 255.0, green: 48.0 / 255.0, blue: 31.0 / 255.0, alpha: 1.0),
+                        .init(red: 167.0 / 255.0, green: 199.0 / 255.0, blue: 165.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+            case .deepForest:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 2.0 / 255.0, green: 48.0 / 255.0, blue: 31.0 / 255.0, alpha: 1.0),
+                        .init(red: 0.0 / 255.0, green: 59.0 / 255.0, blue: 42.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+            case .gardenGlow:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 2.0 / 255.0, green: 48.0 / 255.0, blue: 31.0 / 255.0, alpha: 1.0),
+                        .init(red: 176.0 / 255.0, green: 208.0 / 255.0, blue: 165.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+            case .dayAndNight:
+                return HGradient(
+                    startPoint: CGPoint(x: 0, y: 0.5),
+                    endPoint: CGPoint(x: 1, y: 0.5),
+                    colors: [
+                        .init(red: 2.0 / 255.0, green: 48.0 / 255.0, blue: 31.0 / 255.0, alpha: 1.0),
+                        .init(red: 80.0 / 255.0, green: 166.0 / 255.0, blue: 133.0 / 255.0, alpha: 1.0)
+                    ],
+                    locations: [0, 1]
+                )
+             
+            case .naturalRenewal:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 168.0 / 255.0, green: 230.0 / 255.0, blue: 163.0 / 255.0, alpha: 1.0),
+                                .init(red: 108.0 / 255.0, green: 191.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .forestFresh:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 117.0 / 255.0, green: 169.0 / 255.0, blue: 92.0 / 255.0, alpha: 1.0),
+                                .init(red: 77.0 / 255.0, green: 139.0 / 255.0, blue: 77.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .softGrass:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 196.0 / 255.0, green: 230.0 / 255.0, blue: 163.0 / 255.0, alpha: 1.0),
+                                .init(red: 127.0 / 255.0, green: 191.0 / 255.0, blue: 108.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .underTheShade:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 46.0 / 255.0, green: 80.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0),
+                                .init(red: 167.0 / 255.0, green: 199.0 / 255.0, blue: 165.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .freshSpringBreeze:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 141.0 / 255.0, green: 225.0 / 255.0, blue: 164.0 / 255.0, alpha: 1.0),
+                                .init(red: 167.0 / 255.0, green: 199.0 / 255.0, blue: 165.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .endlessSpring:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 185.0 / 255.0, green: 225.0 / 255.0, blue: 198.0 / 255.0, alpha: 1.0),
+                                .init(red: 111.0 / 255.0, green: 158.0 / 255.0, blue: 87.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .risingLeaves:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 176.0 / 255.0, green: 228.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0),
+                                .init(red: 133.0 / 255.0, green: 208.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
+                    case .mysticForest:
+                        return HGradient(
+                            startPoint: CGPoint(x: 0, y: 0.5),
+                            endPoint: CGPoint(x: 1, y: 0.5),
+                            colors: [
+                                .init(red: 47.0 / 255.0, green: 79.0 / 255.0, blue: 51.0 / 255.0, alpha: 1.0),
+                                .init(red: 90.0 / 255.0, green: 155.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0)
+                            ],
+                            locations: [0, 1]
+                        )
             }
         }
     }
@@ -461,8 +608,8 @@ public extension HGradient {
                 animation.repeatCount = .infinity
                 animation.autoreverses = true
                 return animation
-
-
+                
+                
             }
         }
     }
@@ -471,7 +618,7 @@ public extension HGradient {
         case axial
         case conic
         case radial
-
+        
         public func type() -> CAGradientLayerType {
             switch self {
             case .axial:   .axial
