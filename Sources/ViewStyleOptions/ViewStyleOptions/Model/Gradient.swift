@@ -129,7 +129,7 @@ public extension HGradient {
         case limeLagoon
         case goldenDusk
         case peachFizz
-        case sunsetPop
+        case sunsetPop // +
         
         case sunset
         case oceanBreeze
@@ -139,9 +139,9 @@ public extension HGradient {
         case pinkDream
         case autumnLeaves
         case mintyFresh
-        case galaxy
+        case galaxy // +
         
-        case darkForest
+        case darkForest // +
         case freshSpring
         case deepForest
         case gardenGlow
