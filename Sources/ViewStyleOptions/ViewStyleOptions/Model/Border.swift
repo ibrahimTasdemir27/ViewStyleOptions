@@ -17,5 +17,6 @@ public struct Border {
     }
     
     public static let lightGray: Border = .init(size: 0.4, color: UIColor.darkGray)
+    public static let lightPremium: Border = .init(size: 0.6, color: .init(red: 255/255, green: 164/255, blue: 0/255, alpha: 1.0))
 }
 
