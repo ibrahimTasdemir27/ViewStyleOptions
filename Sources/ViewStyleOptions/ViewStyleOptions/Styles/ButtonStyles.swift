@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import SnapKit
  
 public enum ButtonViewStyleOptions: ViewStyleOptionsApplier {
     case setTitle(String?)
     case setTitleColor(UIColor?)
     case setImage(UIImage?, aligment: UIControl.ContentHorizontalAlignment = .center)
     case setContentInset(UIEdgeInsets)
+    case setDrawableSize(CGSize)
     case setFont(UIFont)
+    case setFontSize(CGFloat)
+    case set0Line
+    case setTextAligment(NSTextAlignment)
     case setAction((() -> Void)?, animation: [VAnimation]? = nil)
 }
 
@@ -26,11 +31,44 @@ public extension ButtonViewStyleOptions {
             target.setTitleColor(color, for: .normal)
         case .setImage(let image, let aligment):
             target.setImage(image, for: .normal)
-            target.contentHorizontalAlignment = aligment
+            switch aligment {
+            case .left:
+                target.semanticContentAttribute = .forceLeftToRight
+                target.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 8)
+                target.titleEdgeInsets = .init(top: 0, left: 8, bottom: 0, right: 0)
+
+            case .right:
+                // image sağda, title solda
+                target.semanticContentAttribute = .forceRightToLeft
+                target.imageEdgeInsets = .init(top: 0, left: 8, bottom: 0, right: 0)
+                target.titleEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 8)
+
+            case .center:
+                // image ortada, title yok ya da önemli değil
+                target.semanticContentAttribute = .unspecified
+                target.titleEdgeInsets = .zero
+                target.imageEdgeInsets = .zero
+            default: break
+            }
+
+
         case .setContentInset(let uIEdgeInsets):
             target.contentEdgeInsets = uIEdgeInsets
+        case .setDrawableSize(let size):
+            target.imageView?.snp.makeConstraints { make in
+                make.size.equalTo(size)
+                make.centerY.equalToSuperview()
+                make.trailing.equalTo(target.titleLabel!.snp.leading).inset(2)
+                
+            }
         case .setFont(let uIFont):
             target.titleLabel?.font = uIFont
+        case .setFontSize(let size):
+            target.titleLabel?.applyStyles(.setSize(size))
+        case .set0Line:
+            target.titleLabel?.applyStyles(.set0Line)
+        case .setTextAligment(let aligment):
+            target.titleLabel?.applyStyles(.setAligment(aligment))
         case .setAction(let action, let animation):
             target.onTapGesture {
                 action?()

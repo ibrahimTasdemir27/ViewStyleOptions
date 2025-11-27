@@ -49,10 +49,21 @@ public extension ViewStyleOptions {
         case .setAlpha(let alpha):
             target.alpha = alpha
         case .setSize(let size):
-            NSLayoutConstraint.activate([
-                target.heightAnchor.constraint(equalToConstant: size.height),
-                target.widthAnchor.constraint(equalToConstant: size.width)
-            ])
+            target.translatesAutoresizingMaskIntoConstraints = false
+            if (size.height == UIView.noIntrinsicMetric) {
+                NSLayoutConstraint.activate([
+                    target.widthAnchor.constraint(equalToConstant: size.width)
+                ])
+            } else if (size.width == UIView.noIntrinsicMetric) {
+                NSLayoutConstraint.activate([
+                    target.heightAnchor.constraint(equalToConstant: size.height),
+                ])
+            } else {
+                NSLayoutConstraint.activate([
+                    target.heightAnchor.constraint(equalToConstant: size.height),
+                    target.widthAnchor.constraint(equalToConstant: size.width)
+                ])
+            }
         case .addSubviews(let subviews):
             subviews.forEach { subview in
                 target.addSubview(subview)

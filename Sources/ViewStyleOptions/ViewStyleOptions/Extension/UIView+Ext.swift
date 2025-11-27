@@ -16,6 +16,14 @@ public extension UIEdgeInsets {
     init(horizontal value: CGFloat) {
         self.init(top: 0, left: value, bottom: 0, right: value)
     }
+    
+    init(vertical value: CGFloat) {
+        self.init(top: value, left: 0, bottom: value, right: 0)
+    }
+    
+    init(horizontal: CGFloat, vertical: CGFloat) {
+        self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
+    }
 }
 
  
@@ -25,8 +33,17 @@ public extension UIView {
         configs.forEach({ $0.apply(to: self) })
     }
     
+    convenience init(style: Theme.Style, and styles: [ViewStyleOptions] = []) {
+        self.init()
+        self.applyStyles(style.view + styles)
+    }
+    
     func applyStyles(_ styles: ViewStyleOptions...) {
         styles.forEach { $0.apply(to: self) }
+    }
+    
+    func applyStyles(style: Theme.Style) {
+        self.applyStyles(style.view)
     }
     
     func applyStyles(_ styles: [ViewStyleOptions]) {
@@ -52,6 +69,16 @@ public extension UIButton {
         special.forEach({ $0.apply(to: self) })
     }
     
+    convenience init(style: Theme.ButtonStyle, and styles: [ButtonViewStyleOptions] = []) {
+        self.init()
+        self.applyStyles(style.view)
+        self.applyStyles(style.special + styles)
+    }
+    
+    func applyStyles(_ style: Theme.ButtonStyle) {
+        self.applyStyles(style.view)
+        self.applyStyles(style.special)
+    }
     
     func applyStyles(_ styles: ButtonViewStyleOptions...) {
         styles.forEach { $0.apply(to: self) }
@@ -60,6 +87,7 @@ public extension UIButton {
     func applyStyles(_ styles: [ButtonViewStyleOptions]) {
         styles.forEach { $0.apply(to: self) }
     }
+
 }
 
 public extension UILabel {
@@ -78,6 +106,17 @@ public extension UILabel {
     convenience init(special: LabelViewStyleOptions...) {
         self.init()
         special.forEach({ $0.apply(to: self) })
+    }
+    
+    convenience init(style: Theme.LabelStyle, and styles: [LabelViewStyleOptions] = []) {
+        self.init()
+        self.applyStyles(style.view)
+        self.applyStyles(style.special + styles)
+    }
+    
+    func applyStyles(_ style: Theme.LabelStyle) {
+        self.applyStyles(style.view)
+        self.applyStyles(style.special)
     }
     
     func applyStyles(_ styles: LabelViewStyleOptions...) {
@@ -107,6 +146,7 @@ public extension UITextView {
         self.init()
         special.forEach({ $0.apply(to: self) })
     }
+    
     
     func applyStyles(_ styles: TextViewStyleOptions...) {
         styles.forEach { $0.apply(to: self) }
@@ -142,5 +182,12 @@ public extension UIImageView {
     
     func applyStyles(_ styles: [ImageViewStyleOptions]) {
         styles.forEach { $0.apply(to: self) }
+    }
+}
+
+
+public extension CGSize {
+    public static func size(_ square: CGFloat) -> CGSize {
+        return CGSize.init(width: square, height: square)
     }
 }
