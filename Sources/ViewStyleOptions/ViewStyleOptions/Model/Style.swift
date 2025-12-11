@@ -24,6 +24,12 @@ public enum Theme {
             self.special = special
             super.init(view: view)
         }
+        
+        public static func generate(_ style: ButtonStyle,
+                             configs: [ViewStyleOptions] = [], special: [ButtonViewStyleOptions] = []) -> ButtonStyle {
+            let newStyle = ButtonStyle.init(view: style.view + configs, special: style.special + special)
+            return newStyle
+        }
     }
     
     public class LabelStyle: Style {

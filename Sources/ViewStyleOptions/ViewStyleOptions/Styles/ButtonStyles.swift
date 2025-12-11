@@ -14,6 +14,7 @@ public enum ButtonViewStyleOptions: ViewStyleOptionsApplier {
     case setImage(UIImage?, aligment: UIControl.ContentHorizontalAlignment = .center)
     case setContentInset(UIEdgeInsets)
     case setDrawableSize(CGSize)
+    case setIconSize(CGSize)
     case setFont(UIFont)
     case setFontSize(CGFloat)
     case set0Line
@@ -60,6 +61,11 @@ public extension ButtonViewStyleOptions {
                 make.centerY.equalToSuperview()
                 make.trailing.equalTo(target.titleLabel!.snp.leading).inset(2)
                 
+            }
+        case .setIconSize(let size):
+            target.imageView?.snp.makeConstraints { make in
+                make.size.equalTo(size)
+                make.centerY.equalToSuperview()
             }
         case .setFont(let uIFont):
             target.titleLabel?.font = uIFont
