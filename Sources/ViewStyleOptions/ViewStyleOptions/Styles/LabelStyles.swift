@@ -14,6 +14,7 @@ public enum LabelViewStyleOptions: ViewStyleOptionsApplier {
     case setTextColor(UIColor)
     case setAligment(NSTextAlignment)
     case set0Line
+    case underlined
     case setGesture(handler: (() -> Void)?)
 }
 
@@ -32,6 +33,16 @@ public extension LabelViewStyleOptions {
             target.textColor = color
         case .setAligment(let aligment):
             target.textAlignment = aligment
+        case .underlined:
+            guard let text = target.text, !text.isEmpty else { return }
+
+            let attributes: [NSAttributedString.Key: Any] = [
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
+                .font: target.font as Any,
+                .foregroundColor: target.textColor as Any
+            ]
+
+            target.attributedText = NSAttributedString(string: text, attributes: attributes)
         case .set0Line:
             target.numberOfLines = 0
         case .setGesture(let handler):
