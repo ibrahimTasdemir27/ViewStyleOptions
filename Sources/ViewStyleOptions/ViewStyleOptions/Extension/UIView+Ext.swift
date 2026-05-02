@@ -119,6 +119,11 @@ public extension UILabel {
         self.applyStyles(style.special)
     }
     
+    func applyStyles(_ style: Theme.LabelStyle, _ others: LabelViewStyleOptions...) {
+        self.applyStyles(style.view)
+        self.applyStyles(style.special)
+    }
+    
     func applyStyles(_ styles: LabelViewStyleOptions...) {
         styles.forEach { $0.apply(to: self) }
     }
